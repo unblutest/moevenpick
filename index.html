@@ -25,6 +25,63 @@
         <link rel="alternate" hreflang="de-de" href="https://www.moevenpick-wein.de/">
 <link rel="alternate" hreflang="fr-ch" href="https://www.moevenpick-wein.com/fr/">
 
+
+<!-- Load unblu -->
+<script src="https://unblu.cloud/unblu/js-api/v2/visitor/visitor-api.min.js"></script>
+<script>
+openVisitorUI = () => {
+
+  if (unblu.api.isConfigurationNeeded()) {
+    unblu.api.configure({serverUrl: "https://unblu.cloud", apiKey: "E0R3qCkWRFmcepcme2ct-Q"}).initialize().then(api => {
+      // use the api
+      console.log("API initialized successfully!");
+
+      api.ui.openIndividualUi().then(() => {
+
+      }).catch();
+
+
+    }).catch(e => {
+      if(e.type === 'INITIALIZATION_TIMEOUT') {
+        //retry
+      } else if(e.type === 'UNSUPPORTED_BROWSER') {
+        // display unsupported browser dialog
+      } else {
+        // show generic error message
+      }
+    });
+  } else if (unblu.api.isInitialized()) {
+    var api = unblu.api.initializedApi;
+    api.ui.openIndividualUi().then(() => {
+
+    }).catch();
+  } else {
+    unblu.api.initialize().then(api => {
+      // use the api
+      console.log("API initialized successfully!");
+
+      api.ui.openIndividualUi().then(() => {
+
+      }).catch();
+    }).catch(e => {
+      if(e.type === 'INITIALIZATION_TIMEOUT') {
+        //retry
+      } else if(e.type === 'UNSUPPORTED_BROWSER') {
+        // display unsupported browser dialog
+      } else {
+        // show generic error message
+      }
+    });
+  }
+}
+
+var el; // activation element
+el = document.getElementById('activate_live_support');
+if(el) {
+    el.addEventListener('click', openVisitorUI, false);
+}
+</script>
+
 <script type="application/ld+json">
 {
   "@context" : "http://schema.org/",
@@ -5073,62 +5130,6 @@ var allInputs = document.getElementsByTagName( 'input' );
         </div>
     </div>
 </div>
-
-<script src="https://unblu.cloud/unblu/js-api/v2/visitor/visitor-api.min.js"></script>
-<script>
-openVisitorUI = () => {
-
-  if (unblu.api.isConfigurationNeeded()) {
-    unblu.api.configure({serverUrl: "https://unblu.cloud", apiKey: "E0R3qCkWRFmcepcme2ct-Q"}).initialize().then(api => {
-      // use the api
-      console.log("API initialized successfully!");
-
-      api.ui.openIndividualUi().then(() => {
-
-      }).catch();
-
-
-    }).catch(e => {
-      if(e.type === 'INITIALIZATION_TIMEOUT') {
-        //retry
-      } else if(e.type === 'UNSUPPORTED_BROWSER') {
-        // display unsupported browser dialog
-      } else {
-        // show generic error message
-      }
-    });
-  } else if (unblu.api.isInitialized()) {
-    var api = unblu.api.initializedApi;
-    api.ui.openIndividualUi().then(() => {
-
-    }).catch();
-  } else {
-    unblu.api.initialize().then(api => {
-      // use the api
-      console.log("API initialized successfully!");
-
-      api.ui.openIndividualUi().then(() => {
-
-      }).catch();
-    }).catch(e => {
-      if(e.type === 'INITIALIZATION_TIMEOUT') {
-        //retry
-      } else if(e.type === 'UNSUPPORTED_BROWSER') {
-        // display unsupported browser dialog
-      } else {
-        // show generic error message
-      }
-    });
-  }
-}
-
-var el; // activation element
-el = document.getElementById('activate_live_support');
-if(el) {
-    el.addEventListener('click', openVisitorUI, false);
-}
-</script>
-
 
 <script>
     require(['jquery', 'domReady!'], function($){
