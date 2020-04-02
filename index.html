@@ -74,12 +74,6 @@ openVisitorUI = () => {
     });
   }
 }
-
-var el; // activation element
-el = document.getElementById('activate_live_support');
-if(el) {
-    el.addEventListener('click', openVisitorUI, false);
-}
 </script>
 
 <script type="application/ld+json">
@@ -5132,6 +5126,13 @@ var allInputs = document.getElementsByTagName( 'input' );
 </div>
 
 <script>
+
+    var el; // activation element
+    el = document.getElementById('activate_live_support');
+    if(el) {
+        el.addEventListener('click', openVisitorUI, false);
+    }
+
     require(['jquery', 'domReady!'], function($){
         var element = $("#activate_live_support").first();
         if (element.length === 1) {
